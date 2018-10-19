@@ -1,0 +1,1 @@
+from storeapp import myapp
