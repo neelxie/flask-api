@@ -8,7 +8,7 @@ from flask_restful.reqparse import RequestParser
 products = [
     {
         'id': 1,
-        'name': 'Pens',
+        'name': 'pens',
         'qty': 231,
         'Min-Stock': 200,
         'price': 700,
@@ -60,8 +60,3 @@ class ProductOne(Resource):
 class ProductList(Resource):
     def get(self):
         return products
-
-    def post(self):
-        args = product_request_parser.parse_args()
-        products.append(args)
-        return {"msg": "product added", "product_info": args}
