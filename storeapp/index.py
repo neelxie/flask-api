@@ -13,13 +13,13 @@ message = """
            body{
                width:80%;
                margin:0 auto;
+               background-color: #ff652f;
            }
-           .main-container{
+           .container{
                margin-top:45px;
            }
            h2{
                font-size:16pt;
-               color:orange;
                text-align:center;
            }
            a{
@@ -28,7 +28,7 @@ message = """
          </style>
        </head>
        <body>
-         <div class='main-content'>
+         <div class='container'>
            <h2>Store Manager Flask Api</h2>
               Currently supported endpoints <br>
               <a href='https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Products'>Products</a> <br/>
