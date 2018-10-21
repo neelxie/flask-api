@@ -64,6 +64,5 @@ class ProductList(Resource):
 
     # create a new product and add it to products.
     def post(self):
-        #args = product_request_parser.parse_args()
-        #products.append(args)
-        pass
+        products.append(request.get_json())
+        return {"msg": "Product has been added."}, 201
