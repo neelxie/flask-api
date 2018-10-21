@@ -1,4 +1,4 @@
-from flask-restful import Resource
+from flask_restful import Resource
 
 message = """
        <!DOCTYPE html>
