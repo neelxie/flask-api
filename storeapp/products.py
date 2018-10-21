@@ -9,7 +9,7 @@ from flask import request, jsonify
 products = [
     {
         'id': 1,
-        'name': 'Pens',
+        'name': 'pens',
         'qty': 231,
         'Min-Stock': 200,
         'price': 700,
