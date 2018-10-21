@@ -7,9 +7,6 @@ class Config(object):
     SECRET_KEY = 'STeal-THis-ANd-I-WIll-KEel-YOu-ANd-EVeryone-YOu-KNow'
     CRSF_ENABLED = True
 
-class ProductionConfig(Config):
-    DEBUG = False
-
 class TestingConfig(Config):
     TESTING = True
     DEBUG = True
@@ -18,4 +15,14 @@ class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
 
-config = TestingConfig
+
+class ProductionConfig(Config):
+    """Configurations for Production"""
+    pass
+
+
+app_config = {
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "production": ProductionConfig
+}

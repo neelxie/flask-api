@@ -6,11 +6,13 @@ from storeapp.sales import SaleList
 from storeapp.sales import SaleOne
 from storeapp.users import UserOne
 from storeapp.users import UserList
+from storeapp.index import Index
 
 
 api_bp = Blueprint('api', __name__)
 api = Api(api_bp)
 
+api.add_resource(Index, '/')
 api.add_resource(ProductList, '/Products')
 api.add_resource(ProductOne, '/Products/<string:name>')
 api.add_resource(SaleList, '/Sales')
