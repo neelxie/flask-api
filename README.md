@@ -19,12 +19,11 @@ Flask Application Programming Interface for my Store-Manager project.
 
 
 ## UI Features
- |`/attendant`| `/admin`|
  |---|---|
- |- search available products| - add attendant|
+ |- add attendant|
  |- make sales| - add new, modify and delete products|
  |- view user profile|- view sales made by different attendants|
- |- add products to cart|- assign product categories|
+ |- add products to cart|
  ||- view product details|
  
 
@@ -46,7 +45,7 @@ Flask Application Programming Interface for my Store-Manager project.
 
 ### Running the app
 
-- 'python3 run.py'
+- 'python run.py'
 
 ### CREDITS
 - I would like to appreciate other bootcamp candidates for your efforts in helping me where you could.
