@@ -4,6 +4,7 @@ from flask_restful import reqparse
 from flask_restful import abort
 from flask_restful import Api
 from flask_restful.reqparse import RequestParser
+from flask import request, jsonify
 
 products = [
     {
@@ -63,6 +64,6 @@ class ProductList(Resource):
 
     # create a new product and add it to products.
     def post(self):
-        args = product_request_parser.parse_args()
-        products.append(args)
-        return {"msg": "product has been added.", "product_info": args}, 201
+        #args = product_request_parser.parse_args()
+        #products.append(args)
+        pass

@@ -4,6 +4,7 @@ from flask_restful import reqparse
 from flask_restful import abort
 from flask_restful import Api
 from flask_restful.reqparse import RequestParser
+from flask import request, jsonify
 
 users = [
     {'username': 'mike', 'role': 'attendant'},

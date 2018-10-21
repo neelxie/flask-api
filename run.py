@@ -1,8 +1,9 @@
 from flask import Flask
+#from config import config
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(config_filename)
+    #app.config.from_object(config)
 
     from app import api_bp
     app.register_blueprint(api_bp, url_prefix='/storemanager/api/v1')

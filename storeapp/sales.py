@@ -4,6 +4,7 @@ from flask_restful import reqparse
 from flask_restful import abort
 from flask_restful import Api
 from flask_restful.reqparse import RequestParser
+from flask import request, jsonify
 
 sales = [
     {
@@ -59,6 +60,5 @@ class SaleList(Resource):
 
     # create a new sale and add it to sales.
     def post(self):
-        args = sale_request_parser.parse_args()
-        sales.append(args)
-        return {"msg": "sale has been added.", "sale_info": args}, 201
+        sales.append(request.get_json())
+        return {"msg": "Sale has been made."}, 201

@@ -7,7 +7,7 @@ class Config(object):
     SECRET_KEY = 'STeal-THis-ANd-I-WIll-KEel-YOu-ANd-EVeryone-YOu-KNow'
     CRSF_ENABLED = True
 
-class ProductionConfig(config):
+class ProductionConfig(Config):
     DEBUG = False
 
 class TestingConfig(Config):
@@ -17,3 +17,5 @@ class TestingConfig(Config):
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+
+config = TestingConfig
