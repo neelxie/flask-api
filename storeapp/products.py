@@ -6,26 +6,8 @@ from flask_restful import Api
 from flask_restful.reqparse import RequestParser
 from flask import request, jsonify
 
-products = [
-    {
-        'id': 1,
-        'name': 'pens',
-        'qty': 231,
-        'Min-Stock': 200,
-        'price': 700,
-        'Units': 3000,
-        'category': 'stationary'    
-    },
-    {
-        'id': 2,
-        'name': 'soaks',
-        'qty': 23,
-        'Min-Stock': 20,
-        'price': 1500,
-        'Units': 30,
-        'category': 'clothes'
-    }
-]
+products = []
+
 def get_product_by_name(name):
     for product in products:
         if product.get("name") == name:

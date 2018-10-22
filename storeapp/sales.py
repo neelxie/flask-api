@@ -6,24 +6,8 @@ from flask_restful import Api
 from flask_restful.reqparse import RequestParser
 from flask import request, jsonify
 
-sales = [
-    {
-        'sale_id': 1,
-        'name': 'Pens',
-        'qty_sold': 11,
-        'amount': 700,
-        'product_id': 25,
-        'category': 'stationary'    
-    },
-    {
-        'sale_id': 2,
-        'name': 'soaks',
-        'qty_sold': 23,
-        'amount': 1500,
-        'product_id': 30,
-        'category': 'clothes'
-    }
-]
+sales = []
+
 def get_sale_by_id(sale_id):
     for sale in sales:
         if sale.get("sale_id") == int(sale_id):

@@ -18,7 +18,7 @@ Flask Application Programming Interface for my Store-Manager project.
 |'Sales' POST |[/storemanager/api/v1/Sales](https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Sales)|
 
 
-## UI Features
+## Features
  |---|---|
  |- add attendant|
  |- make sales| - add new, modify and delete products|
