@@ -9,13 +9,13 @@ Flask Application Programming Interface for my Store-Manager project.
 ## Heroku Endpoints
 |Endpoint|Link|
 |:---:|:---|
-|Index Route|[/](https://warm-mountain-24705.herokuapp.com)|
-|'Products' GET|[/storemanager/api/v1/Products](https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Products)|
-|'Products' GET Item|[/storemanager/api/v1/Products/name](https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Products/soaks)|
-|'Products' POST|[/storemanager/api/v1/Products](https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Products)|
-|'Sales' GET |[/storemanager/api/v1/Sales](https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Sales)|
-|'Sales' GET |[/storemanager/api/v1/Sales/sale_id](https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Sales/1)|
-|'Sales' POST |[/storemanager/api/v1/Sales](https://warm-mountain-24705.herokuapp.com/storemanager/api/v1/Sales)|
+|Index Route|[/](https://mystoremanager-api.herokuapp.com)|
+|'Products' GET|[/storemanager/api/v1/Products](https://mystoremanager-api.herokuapp.com/storemanager/api/v1/Products)|
+|'Products' GET Item|[/storemanager/api/v1/Products/name](https://mystoremanager-api.herokuapp.com/storemanager/api/v1/Products/soaks)|
+|'Products' POST|[/storemanager/api/v1/Products](https://mystoremanager-api.herokuapp.com/storemanager/api/v1/Products)|
+|'Sales' GET |[/storemanager/api/v1/Sales](https://mystoremanager-api.herokuapp.com/storemanager/api/v1/Sales)|
+|'Sales' GET |[/storemanager/api/v1/Sales/sale_id](https://mystoremanager-api.herokuapp.com/storemanager/api/v1/Sales/1)|
+|'Sales' POST |[/storemanager/api/v1/Sales](https://mystoremanager-api.herokuapp.com/storemanager/api/v1/Sales)|
 
 
 ## Features
