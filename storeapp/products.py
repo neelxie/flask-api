@@ -10,8 +10,8 @@ products = []
 
 def get_product_by_name(name):
     for product in products:
-        if product.get("name") == name:
-            return product
+        return product if product.get("name") == name else None
+            
 
 
 product_request_parser = RequestParser(bundle_errors=True)
@@ -36,7 +36,9 @@ class Product:
 class ProductOne(Resource):
     def get(self, name):
         product = get_product_by_name(name)
-        return {"error": "product not found"} if not product else product
+        if not product:
+            return {"error": "product not found"} 
+        return product
 
 class ProductList(Resource):
     def get(self):

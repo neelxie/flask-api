@@ -10,7 +10,8 @@ sales = []
 
 def get_sale_by_id(sale_id):
     for sale in sales:
-        return sale if sale.get("sale_id") == int(sale_id)
+        if sale.get("sale_id") == int(sale_id):
+            return sale
 
 
 sale_request_parser = RequestParser(bundle_errors=True)

@@ -10,7 +10,8 @@ users = []
 
 def get_user_by_username(username):
     for user in users:
-        return user if user.get("username") == username
+        if user.get("username") == username:
+            return user 
             
 
 user_request_parser = RequestParser(bundle_errors=True)
@@ -26,7 +27,9 @@ class User:
 class UserOne(Resource):
     def get(self, username):
         user = get_user_by_username(username)
-        return {"error": "User not found"} if not user else user
+        if not user:
+            return {"error": "User not found"}
+        return user
 
 class UserList(Resource):
     def get(self):
