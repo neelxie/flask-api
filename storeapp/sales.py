@@ -10,8 +10,7 @@ sales = []
 
 def get_sale_by_id(sale_id):
     for sale in sales:
-        if sale.get("sale_id") == int(sale_id):
-            return sale
+        return sale if (sale.get("sale_id") == int(sale_id))
 
 
 sale_request_parser = RequestParser(bundle_errors=True)
@@ -34,9 +33,7 @@ class sale:
 class SaleOne(Resource):
     def get(self, sale_id):
         sale = get_sale_by_id(sale_id)
-        if not sale:
-            return {"error": "sale not found"}
-        return sale
+        return {"error": "sale not found"} if not sale else sale
 
 class SaleList(Resource):
     def get(self):
