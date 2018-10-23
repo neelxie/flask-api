@@ -36,9 +36,7 @@ class Product:
 class ProductOne(Resource):
     def get(self, name):
         product = get_product_by_name(name)
-        if not product:
-            return {"error": "product not found"}
-        return product
+        return {"error": "product not found"} if not product else product
 
 class ProductList(Resource):
     def get(self):
