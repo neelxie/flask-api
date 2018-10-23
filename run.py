@@ -6,7 +6,7 @@ def create_app():
     #app.config.from_object(app_config)
 
     from app import api_bp
-    app.register_blueprint(api_bp, url_prefix='/storemanager/api/v1')
+    app.register_blueprint(api_bp, url_prefix='/api/v1')
 
     return app
 

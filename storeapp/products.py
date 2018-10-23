@@ -8,11 +8,11 @@ from flask import request, jsonify
 
 products = []
 
-def get_product_by_name(name):
+def get_product_by_id(product_id):
     for product in products:
-        return product if product.get("name") == name else None
+        if product.get("product_id") == int(product_id):
+            return product
             
-
 
 product_request_parser = RequestParser(bundle_errors=True)
 product_request_parser.add_argument("id", type=int, required=True, help="Please enter a valid integer for id.")
