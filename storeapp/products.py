@@ -8,14 +8,15 @@ from flask import request, jsonify
 
 products = []
 
-def get_product_by_id(product_id):
+def get_product_by_id(id):
     for product in products:
-        if product.get("product_id") == int(product_id):
-            return product
+        if product.get("id") == id:
+            return product 
             
 
+
 product_request_parser = RequestParser(bundle_errors=True)
-product_request_parser.add_argument("id", type=int, required=True, help="Please enter a valid integer for id.")
+
 product_request_parser.add_argument("name", type=str, required=True, help="name has to be a valid string")
 product_request_parser.add_argument("qty", type=int, required=True, help="Please enter a valid integer for qty")
 product_request_parser.add_argument("min_stock", type=int, required=True, help="Please enter a valid integer for min_stock")
@@ -24,8 +25,7 @@ product_request_parser.add_argument("units", type=int, required=True, help="Plea
 product_request_parser.add_argument("category", type=str, required=True, help="Category has to be a valid string")
 
 class Product:
-    def __init__(self, id, name, qty, min_stock, price, units, category):
-        self.id = id
+    def __init__(self, name, qty, min_stock, price, units, category):
         self.name = name
         self.qty = qty
         self.min_stock = min_stock
@@ -33,9 +33,23 @@ class Product:
         self.units = units
         self.category = category
 
+    def add_product(self):
+        product = dict(
+            id = len(products)+1,
+            name = self.name,
+            qty = self.qty,
+            min_stock = self.min_stock,
+            price = self.price,
+            units = self.units,
+            category = self.category
+        )
+        products.append(product)
+        print(product)
+        return {"msg": "Product has been added.","Product":product}, 201    
+
 class ProductOne(Resource):
     def get(self, name):
-        product = get_product_by_name(name)
+        product = get_product_by_id(id)
         if not product:
             return {"error": "product not found"} 
         return product
@@ -46,5 +60,5 @@ class ProductList(Resource):
 
     # create a new product and add it to products.
     def post(self):
-        products.append(request.get_json())
-        return {"msg": "Product has been added."}, 201
+        data = Product.add_product()
+        return data
