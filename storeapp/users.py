@@ -6,15 +6,13 @@ from flask_restful import Api
 from flask_restful.reqparse import RequestParser
 from flask import request, jsonify
 
-users = [
-    {'username': 'mike', 'role': 'attendant'},
-    {'username':'kenny', 'role':'admin'}
-]
+users = []
 
 def get_user_by_username(username):
     for user in users:
         if user.get("username") == username:
-            return user
+            return user 
+            
 
 user_request_parser = RequestParser(bundle_errors=True)
 user_request_parser.add_argument("username", type=str, required=True, help="Name has to be valid string.")
