@@ -60,10 +60,5 @@ class ProductList(Resource):
 
     # create a new product and add it to products.
     def post(self):
-        product = dict(
-            id = len(products)+1,
-            name = self.name,
-            qty = self.qty,
-        )
-        products.append(product)
+        products.append(request.get_json())
         return {"msg": "Product has been added."}, 201
