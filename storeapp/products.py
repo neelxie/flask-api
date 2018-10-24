@@ -8,14 +8,15 @@ from flask import request, jsonify
 
 products = []
 
-def get_product_by_id(product_id):
+def get_product_by_name(name):
     for product in products:
-        if product.get("product_id") == int(product_id):
-            return product
+        return product if product.get("name") == name else None
             
 
+
 product_request_parser = RequestParser(bundle_errors=True)
-product_request_parser.add_argument("id", type=int, required=True, help="Please enter a valid integer for id.")
+id = len(products) + 1
+# product_request_parser.add_argument("id", type=int, required=True, help="Please enter a valid integer for id.")
 product_request_parser.add_argument("name", type=str, required=True, help="name has to be a valid string")
 product_request_parser.add_argument("qty", type=int, required=True, help="Please enter a valid integer for qty")
 product_request_parser.add_argument("min_stock", type=int, required=True, help="Please enter a valid integer for min_stock")
@@ -33,6 +34,19 @@ class Product:
         self.units = units
         self.category = category
 
+    def add_product(self):
+        product = dict(
+            id = len(products)+1,
+            name = self.name,
+            qty = self.qty,
+            min_stock = self.min_stock,
+            price = self.price,
+            units = self.units,
+            category = self.category
+        )
+        products.append(product)
+        return {"msg": "Product has been added."}, 201    
+
 class ProductOne(Resource):
     def get(self, name):
         product = get_product_by_name(name)
@@ -46,5 +60,10 @@ class ProductList(Resource):
 
     # create a new product and add it to products.
     def post(self):
-        products.append(request.get_json())
+        product = dict(
+            id = len(products)+1,
+            name = self.name,
+            qty = self.qty,
+        )
+        products.append(product)
         return {"msg": "Product has been added."}, 201
