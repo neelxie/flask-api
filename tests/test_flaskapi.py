@@ -22,7 +22,6 @@ class TestFlaskApi(unittest.TestCase):
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"id": 3, "name": "cups", "qty": 326,"Min-Stock": 150, "price": 29000, "Units": 38, "category": "kitchen-ware"}), content_type='application/json')
             self.assertEqual(resp.status_code, 201)
-            # self.assertEqual(data['id'], 3)
 
     """ Test get all products endpoint """
 
