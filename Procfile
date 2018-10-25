@@ -1,1 +1,1 @@
-web: waitress.serve(app, listen='0.0.0.0:5000') 
+web: waitress.serve(run, listen='0.0.0.0:5000') 
