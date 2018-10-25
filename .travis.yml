@@ -5,7 +5,7 @@ python:
 install:
   - pip install -r requirements.txt
 # command to run tests
-script: nosetests --with-coverage
+script: pytest --with-coverage
 
 after_success:
   - coveralls
