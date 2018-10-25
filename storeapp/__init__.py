@@ -8,3 +8,5 @@ def create_app():
     app.register_blueprint(api_bp, url_prefix='/api/v1')
 
     return app
+
+app = create_app()
