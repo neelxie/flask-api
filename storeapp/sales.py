@@ -52,7 +52,9 @@ class sale:
 class SaleOne(Resource):
     def get(self, sale_id):
         sale = get_sale_by_id(sale_id)
-        return {"error": "sale not found"} if not sale else sale
+        if not sale:
+            return {"error": "sale not found"} 
+        return sale
 
 class SaleList(Resource):
     def get(self):
