@@ -1,12 +1,12 @@
 from flask import Blueprint, jsonify, request
 from flask_restful import Api
-from storeapp.products import ProductList
-from storeapp.products import ProductOne
-from storeapp.sales import SaleList
-from storeapp.sales import SaleOne
+from storeapp.views.products_view import ProductList
+from storeapp.views.products_view import ProductOne
+from storeapp.views.sales_view import SaleList
+from storeapp.views.sales_view import SaleOne
+from storeapp.views.index import Index
 from storeapp.users import UserOne
 from storeapp.users import UserList
-from storeapp.index import Index
 
 
 api_bp = Blueprint('api', __name__)
