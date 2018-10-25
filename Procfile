@@ -1,1 +1,1 @@
-web: waitress-serve --listen=*:8000 run:app 
+web: waitress.serve(app, listen='0.0.0.0:5000') 
