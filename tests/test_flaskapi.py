@@ -2,6 +2,7 @@ import unittest
 import warnings
 warnings.filterwarnings("ignore")
 import pytest
+import json
 from storeapp import create_app
 from storeapp.products import products
 from storeapp.sales import sales
