@@ -1,10 +1,8 @@
 import unittest
 import warnings
 warnings.filterwarnings("ignore")
-import json
 import pytest
-from run import create_app
-from copy import deepcopy
+from storeapp import create_app
 from storeapp.products import products
 from storeapp.sales import sales
 
@@ -32,7 +30,7 @@ class TestFlaskApi(unittest.TestCase):
 
     def test_get_a_product_by_id(self):
         with self.app as c:
-            response = c.get('http://127.0.0.1:5000/api/v1/Products/soaks')
+            response = c.get('http://127.0.0.1:5000/api/v1/Products/1')
             self.assertEqual(response.status_code, 200)
 
     def test_sales_record_creation(self):
