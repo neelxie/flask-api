@@ -34,7 +34,8 @@ def get_product_by_name(name):
 
 
 product_request_parser = RequestParser(bundle_errors=True)
-product_request_parser.add_argument("id", type=int, required=True, help="Please enter a valid integer for id.")
+id = len(products) + 1
+# product_request_parser.add_argument("id", type=int, required=True, help="Please enter a valid integer for id.")
 product_request_parser.add_argument("name", type=str, required=True, help="name has to be a valid string")
 product_request_parser.add_argument("qty", type=int, required=True, help="Please enter a valid integer for qty")
 product_request_parser.add_argument("min_stock", type=int, required=True, help="Please enter a valid integer for min_stock")
