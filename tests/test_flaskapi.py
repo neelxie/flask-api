@@ -1,10 +1,9 @@
 import unittest
 import warnings
 warnings.filterwarnings("ignore")
-import json
 import pytest
-from run import create_app
-from copy import deepcopy
+import json
+from storeapp import create_app
 from storeapp.products import products
 from storeapp.sales import sales
 
@@ -14,6 +13,12 @@ class TestFlaskApi(unittest.TestCase):
 
     def setUp(self):
         self.app = app.test_client()
+
+    def test_index_url(self):
+        with self.app as c:
+            resp = c.get('http://127.0.0.1:5000/api/v1/')
+            print(resp)
+            self.assertEqual(resp.status_code, 200)
 
     """ Test product creation endpoint """
 
@@ -32,7 +37,7 @@ class TestFlaskApi(unittest.TestCase):
 
     def test_get_a_product_by_id(self):
         with self.app as c:
-            response = c.get('http://127.0.0.1:5000/api/v1/Products/soaks')
+            response = c.get('http://127.0.0.1:5000/api/v1/Products/1')
             self.assertEqual(response.status_code, 200)
 
     def test_sales_record_creation(self):
@@ -50,6 +55,16 @@ class TestFlaskApi(unittest.TestCase):
         with self.app as c:
             response = c.get('http://127.0.0.1:5000/api/v1/Sales/2')
             self.assertEqual(response.status_code, 200)
+
+    def test_nonexistant_product(self):
+        with self.app as c:
+            response = c.get('http://127.0.0.1:5000/api/v1/Products/<product_id>')
+            self.assertEqual(response.status_code, 404)
+
+    def test_nonexistant_sale(self):
+        with self.app as c:
+            response = c.get('http://127.0.0.1:5000/api/v1/Products/<sale_id>')
+            self.assertEqual(response.status_code, 404)
 
     def tearDown(self):
         pass
