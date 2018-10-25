@@ -15,16 +15,16 @@ products = [
 	    "price" : 311,
 	    "units" : 50,
 	    "category" : "clothes"
-},
-{
-	"id": 2,
-    "name" : "tops",
-	"qty" : 12,
-	"min_stock" : 23,
-	"price" : 311,
-	"units" : 50,
-	"category" : "clothes"
-}
+    },
+    {
+        "id": 2,
+        "name" : "tops",
+	    "qty" : 12,
+	    "min_stock" : 23,
+	    "price" : 311,
+	    "units" : 50,
+	    "category" : "clothes"
+    }
 ]
 
 def get_product_by_name(name):
