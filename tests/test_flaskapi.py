@@ -15,10 +15,19 @@ class TestFlaskApi(unittest.TestCase):
         self.app = app.test_client()
 
     def test_index_url(self):
+        """ Testing the index file."""
         with self.app as c:
             resp = c.get('http://127.0.0.1:5000/api/v1/')
             print(resp)
             self.assertEqual(resp.status_code, 200)
+
+    def test_home_data(self):
+        """ Testing the message in the index file."""
+        with self.app as c:
+            resp = c.get('http://127.0.0.1:5000/api/v1/')
+            print(resp)
+            new_str = '"Store-Manager app by Sekidde Derrick"\n'
+            self.assertEqual(resp.data.decode("utf-8"), new_str)
 
     """ Test product creation endpoint """
 
