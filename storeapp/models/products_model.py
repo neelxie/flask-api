@@ -1,5 +1,6 @@
 from flask_restful.reqparse import RequestParser
 
+
 class Product:
     def __init__(self, product_id, name, qty, min_stock, price, units, category):
         self.product_id = product_id

@@ -7,6 +7,7 @@ from flask_restful.reqparse import RequestParser
 from flask import request, jsonify
 from storeapp.models.products_model import Product
 
+
 products = [
     {
         "product_id": 1,
@@ -31,7 +32,7 @@ products = [
 def get_product_by_id(product_id):
     for product in products:
         if product.get("product_id") == int(product_id):
-            return product 
+            return product
             
 
 class ProductOne(Resource):
