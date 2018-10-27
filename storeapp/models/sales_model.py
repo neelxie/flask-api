@@ -8,4 +8,3 @@ class sale:
         self.amount = amount
         self.product_id = product_id
         self.category = category
-
