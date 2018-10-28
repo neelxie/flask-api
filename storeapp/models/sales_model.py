@@ -1,5 +1,3 @@
-
-
 class sale:
     def __init__(self, sale_id, product_name, qty_sold, amount, product_id, category):
         self.sale_id = sale_id

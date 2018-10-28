@@ -48,5 +48,9 @@ class ProductList(Resource):
 
     # create a new product and add it to products.
     def post(self):
-        products.append(request.get_json())
-        return {"msg": "Product has been added."}, 201
+        data = request.get_json()
+        prod_keys = ("product_id","name","qty","min_stock","price","units","category")
+        if all(key in data.keys() for key in prod_keys):
+            products.append(data)
+            return {"msg": "Product has been added."}, 201
+        return {"msg": "Stuff missng"}
