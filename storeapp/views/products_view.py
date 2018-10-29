@@ -6,26 +6,27 @@ from flask_restful import Api
 from flask_restful.reqparse import RequestParser
 from flask import request, jsonify
 from storeapp.models.products_model import Product
+from storeapp.authenticate import AuthenticateViews
 
-
+auth_obj = AuthenticateViews()
 products = [
     {
-        "product_id": 1,
         "name" : "tops",
 	    "qty" : 12,
 	    "min_stock" : 23,
 	    "price" : 311,
 	    "units" : 50,
-	    "category" : "clothes"
+	    "category" : "clothes",
+        "product_id": 1
     },
     {
-        "product_id": 2,
         "name" : "shorts",
 	    "qty" : 9,
 	    "min_stock" : 30,
 	    "price" : 1000,
 	    "units" : 15,
-	    "category" : "clothes"
+	    "category" : "clothes",
+        "product_id": 2
     }
 ]
 
@@ -49,8 +50,19 @@ class ProductList(Resource):
     # create a new product and add it to products.
     def post(self):
         data = request.get_json()
-        prod_keys = ("product_id","name","qty","min_stock","price","units","category")
+        data["product_id"] = len(products)+ 1
+        prod_keys = ("name","qty","min_stock","price","units","category")
         if all(key in data.keys() for key in prod_keys):
+            name = data.get("name")
+            qty = data.get("qty")
+            min_stock = data.get("min_stock")
+            price = data.get("price")
+            units = data.get("units")
+            category = data.get("category")
+
+            not_valid = auth_obj.authenticate_product(name, qty, min_stock, price, units, category)
+            if not_valid:
+                return {"msg": not_valid}, 400
             products.append(data)
             return {"msg": "Product has been added."}, 201
         return {"msg": "Stuff missng"}
