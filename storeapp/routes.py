@@ -5,8 +5,6 @@ from storeapp.views.products_view import ProductOne
 from storeapp.views.sales_view import SaleList
 from storeapp.views.sales_view import SaleOne
 from storeapp.views.index import Index
-from storeapp.users import UserOne
-from storeapp.users import UserList
 
 
 api_bp = Blueprint('api', __name__)
@@ -17,5 +15,3 @@ api.add_resource(ProductList, '/Products')
 api.add_resource(ProductOne, '/Products/<int:product_id>')
 api.add_resource(SaleList, '/Sales')
 api.add_resource(SaleOne, '/Sales/<int:sale_id>')
-api.add_resource(UserList, '/Users')
-api.add_resource(UserOne, '/Users/<string:username>')
