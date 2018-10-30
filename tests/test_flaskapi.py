@@ -35,6 +35,12 @@ class TestFlaskApi(unittest.TestCase):
                 {"name": "cups", "qty": 326, "min_stock": 150, "price": 29000, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
             self.assertEqual(resp.status_code, 201)
 
+    def test_authenticate_product_creation(self):
+        with self.app as c:
+            resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
+                {"name": "cups", "qty": 326, "min_stock": 150, "price": " ", "units": 38, "category": "kitchen-ware"}), content_type='application/json')
+            self.assertEqual(resp.data, b'{"msg": "product price must be a number."}\n')
+
     """ Test get all products endpoint """
 
     def test_get_all_products(self):
