@@ -18,14 +18,12 @@ class TestFlaskApi(unittest.TestCase):
         """ Testing the index file."""
         with self.app as c:
             resp = c.get('http://127.0.0.1:5000/api/v1/')
-            print(resp)
             self.assertEqual(resp.status_code, 200)
 
     def test_home_data(self):
         """ Testing the message in the index file."""
         with self.app as c:
             resp = c.get('http://127.0.0.1:5000/api/v1/')
-            print(resp)
             new_str = '"Store-Manager app by Sekidde Derrick"\n'
             self.assertEqual(resp.data.decode("utf-8"), new_str)
 
@@ -34,7 +32,7 @@ class TestFlaskApi(unittest.TestCase):
     def test_api_product_creation(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
-                {"id": 3, "name": "cups", "qty": 326,"Min-Stock": 150, "price": 29000, "Units": 38, "category": "kitchen-ware"}), content_type='application/json')
+                {"name": "cups", "qty": 326, "min_stock": 150, "price": 29000, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
             self.assertEqual(resp.status_code, 201)
 
     """ Test get all products endpoint """

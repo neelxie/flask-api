@@ -15,6 +15,9 @@ class TestModelsAndViews(unittest.TestCase):
 
     def setUp(self):
         self.app = app.test_client()
+
+    def test_app_exists(self):
+        self.assertFalse(app is None)
      
     #Testing the get_product_by_id function with an integer
     def test_get_product_by_id(self):

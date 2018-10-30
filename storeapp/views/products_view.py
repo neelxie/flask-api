@@ -65,4 +65,4 @@ class ProductList(Resource):
                 return {"msg": not_valid}, 400
             products.append(data)
             return {"msg": "Product has been added."}, 201
-        return {"msg": "Stuff missng"}
+        return {"msg": "field missing."}, 400
