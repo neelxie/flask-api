@@ -41,10 +41,5 @@ class TestModelsAndViews(unittest.TestCase):
         sale = sales[0]
         self.assertIsInstance(sale, dict)
 
-
-
     def tearDown(self):
         pass
-
-if __name__ == '__main__':
-    unittest.main()

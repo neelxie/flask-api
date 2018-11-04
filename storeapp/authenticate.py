@@ -7,6 +7,8 @@ class AuthenticateViews:
             return "product name must be a string."
         if name.isspace():
             return "product name is missing"
+        if  not name.isalpha():
+            return "product name should only be letters"
         if not qty:
             return "product quantity missing."
         if  not isinstance(qty, int):
@@ -26,4 +28,4 @@ class AuthenticateViews:
         if not category:
             return "product category missing."
         if  not isinstance(category, str):
-            return "product category must be a string."        
+            return "product category must be a string."
