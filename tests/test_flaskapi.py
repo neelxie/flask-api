@@ -40,25 +40,25 @@ class TestFlaskApi(unittest.TestCase):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": "cups", "qty": 326, "min_stock": 150, "price": " ", "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product price must be a number."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product price missing or must be a number."}\n')
 
     def test_authenticate_product_name(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": 45, "qty": 326, "min_stock": 150, "price": 2565, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product name must be a string."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product name missing or must be a string."}\n')
 
     def test_authenticate_product_name_missing(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": None, "qty": 326, "min_stock": 150, "price": 29235, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product name missing."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product name missing or must be a string."}\n')
 
     def test_authenticate_product_name_space(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": " ", "qty": 326, "min_stock": 150, "price": 5445, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product name is missing"}\n')
+            self.assertEqual(resp.data, b'{"msg": "product name should only be letters"}\n')
 
     def test_authenticate_product_name_letters(self):
         with self.app as c:
@@ -70,55 +70,55 @@ class TestFlaskApi(unittest.TestCase):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": "soda", "qty": None, "min_stock": 150, "price": 4523, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product quantity missing."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product quantity missing or must be a number."}\n')
 
     def test_authenticate_product_quantity_number(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": "soda", "qty": "bnn", "min_stock": 150, "price": 5442, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product quantity must be a number."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product quantity missing or must be a number."}\n')
 
     def test_authenticate_product_minstock(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
-                {"name": "soda", "qty": 326, "min_stock": None, "price": " ", "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product min_stock missing."}\n')
+                {"name": "soda", "qty": 326, "min_stock": None, "price": 2563, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
+            self.assertEqual(resp.data, b'{"msg": "product min_stock missing or must be a number."}\n')
 
     def test_authenticate_product_price(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": "soda", "qty": 326, "min_stock": 150, "price": None, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product price missing."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product price missing or must be a number."}\n')
 
     def test_authenticate_product_units(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": "mputa", "qty": 326, "min_stock": 150, "price": 452, "units": None, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product units missing."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product units missing or must be a number."}\n')
 
     def test_authenticate_product_minstock_number(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": "fene", "qty": 326, "min_stock": "ggh", "price": 456, "units": 38, "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product min_stock must be a number."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product min_stock missing or must be a number."}\n')
 
     def test_authenticate_product_units_number(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
                 {"name": "gweke", "qty": 326, "min_stock": 150, "price": 4522, "units": "gdhs", "category": "kitchen-ware"}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product units must be a number."}\n')
+            self.assertEqual(resp.data, b'{"msg": "product units missing or must be a number."}\n')
 
     def test_authenticate_product_category_missing(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
-                {"name": "fene", "qty": 326, "min_stock": 150, "price": 29235, "units": 38, "category": None}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product category missing."}\n')
+                {"name": "fene", "qty": 326, "min_stock": 150, "price": 29235, "units": 381, "category": None}), content_type='application/json')
+            self.assertEqual(resp.data, b'{"msg": "product category missing or must be a string."}\n')
 
     def test_authenticate_product_category(self):
         with self.app as c:
             resp = c.post('http://127.0.0.1:5000/api/v1/Products', data=json.dumps(
-                {"name": "fene", "qty": 326, "min_stock": 150, "price": 29235, "units": 38, "category": 4552}), content_type='application/json')
-            self.assertEqual(resp.data, b'{"msg": "product category must be a string."}\n')
+                {"name": "fene", "qty": 326, "min_stock": 150, "price": 29235, "units": 382, "category": 4552}), content_type='application/json')
+            self.assertEqual(resp.data, b'{"msg": "product category missing or must be a string."}\n')
 
     """ Test get all products endpoint """
 
